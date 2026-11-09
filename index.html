@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080d1d">
+  <title>TestPath AI | Your Journey to Success</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #080d1d;
+      --surface: #101a30;
+      --primary: #8b7bff;
+      --secondary: #36d9c5;
+      --text: #f4f5ff;
+      --muted: #a3aec5;
+      --border: rgba(255,255,255,.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    button, input { font: inherit; }
+
+    .container {
+      width: min(1160px, 90%);
+      margin: auto;
+    }
+
+   
+    .background-glow {
+      position: fixed;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      filter: blur(130px);
+      opacity: .17;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .glow-one {
+      background: #735bff;
+      top: 5%;
+      left: -180px;
+    }
+
+    .glow-two {
+      background: #16cdb7;
+      right: -200px;
+      top: 45%;
+    }
+
+ 
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(8,13,29,.78);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: 'Outfit', sans-serif;
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: -.8px;
+    }
+
+    .logo span { color: var(--primary); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+      transition: .3s;
+    }
+
+    .nav-links a:hover { color: white; }
+
+    .nav-btn, .primary-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 13px 22px;
+      border-radius: 10px;
+      background: linear-gradient(110deg, #7665ff, #a18bff);
+      color: white;
+      font-weight: 700;
+      font-size: 14px;
+      border: 0;
+      cursor: pointer;
+      transition: .3s;
+      box-shadow: 0 8px 30px rgba(124,101,255,.2);
+    }
+
+    .nav-btn:hover, .primary-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 35px rgba(124,101,255,.4);
+    }
+
+    .menu-btn {
+      display: none;
+      border: 0;
+      color: white;
+      background: none;
+      font-size: 27px;
+      cursor: pointer;
+    }
+
+    
+    .hero {
+      min-height: 100vh;
+      padding: 150px 0 90px;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      align-items: center;
+      gap: 65px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: #c5bcff;
+      background: rgba(139,123,255,.1);
+      border: 1px solid rgba(139,123,255,.25);
+      border-radius: 50px;
+      padding: 9px 15px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+    }
+
+    .eyebrow i {
+      width: 7px;
+      height: 7px;
+      background: var(--secondary);
+      border-radius: 50%;
+      box-shadow: 0 0 12px var(--secondary);
+    }
+
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(42px, 5.5vw, 70px);
+      line-height: 1.08;
+      letter-spacing: -2.5px;
+      margin-bottom: 24px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #9b8aff, #43dfd0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-description {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.9;
+      max-width: 560px;
+      margin-bottom: 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .secondary-btn {
+      padding: 13px 22px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+      transition: .3s;
+    }
+
+    .secondary-btn:hover {
+      border-color: var(--primary);
+      background: rgba(139,123,255,.1);
+    }
+
+    .trust-note {
+      color: var(--muted);
+      margin-top: 27px;
+      font-size: 12px;
+    }
+
+    
+    .visual {
+      position: relative;
+      min-height: 440px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .orbit {
+      position: absolute;
+      width: 390px;
+      height: 390px;
+      border: 1px solid rgba(139,123,255,.18);
+      border-radius: 50%;
+      animation: rotate 25s linear infinite;
+    }
+
+    .orbit::before, .orbit::after {
+      content: "";
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: var(--secondary);
+      border-radius: 50%;
+      box-shadow: 0 0 20px var(--secondary);
+    }
+
+    .orbit::before { top: 55px; left: 50px; }
+    .orbit::after { bottom: 55px; right: 40px; background: var(--primary); }
+
+    .dashboard {
+      width: min(100%, 390px);
+      padding: 25px;
+      border: 1px solid rgba(255,255,255,.13);
+      background: linear-gradient(145deg, rgba(25,37,66,.96), rgba(14,21,42,.96));
+      border-radius: 22px;
+      box-shadow: 0 30px 90px rgba(0,0,0,.4);
+      position: relative;
+      z-index: 2;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .dashboard-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+
+    .dashboard-top strong { font-family: 'Outfit'; }
+
+    .live {
+      color: var(--secondary);
+      font-size: 11px;
+      background: rgba(54,217,197,.1);
+      padding: 7px 10px;
+      border-radius: 30px;
+    }
+
+    .progress-title {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    .progress {
+      height: 8px;
+      background: #29334d;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .progress span {
+      display: block;
+      width: 78%;
+      height: 100%;
+      border-radius: 20px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      animation: progress 2s ease;
+    }
+
+    .mini-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 15px;
+      background: rgba(255,255,255,.045);
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      margin-top: 12px;
+    }
+
+    .mini-icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: rgba(139,123,255,.15);
+      font-size: 20px;
+    }
+
+    .mini-card strong { font-size: 13px; }
+    .mini-card p { color: var(--muted); font-size: 11px; margin-top: 5px; }
+
+    .floating-tag {
+      position: absolute;
+      z-index: 3;
+      padding: 13px 16px;
+      border-radius: 12px;
+      background: #1a2742;
+      border: 1px solid var(--border);
+      box-shadow: 0 15px 35px rgba(0,0,0,.25);
+      font-size: 12px;
+      font-weight: 700;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .tag-one { top: 55px; right: -5px; }
+    .tag-two { bottom: 50px; left: -20px; animation-delay: 1s; }
+
+   
+    section:not(.hero) { padding: 100px 0; }
+
+    .section-heading {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 55px;
+    }
+
+    .section-heading h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(30px, 4vw, 43px);
+      letter-spacing: -1px;
+      margin: 15px 0;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+ 
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .step-card, .feature-card {
+      padding: 30px;
+      background: rgba(16,26,48,.75);
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      transition: .35s;
+    }
+
+    .step-card:hover, .feature-card:hover {
+      transform: translateY(-9px);
+      border-color: rgba(139,123,255,.5);
+      box-shadow: 0 20px 45px rgba(0,0,0,.2);
+    }
+
+    .step-number {
+      color: var(--primary);
+      font-family: 'Outfit';
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .step-icon, .feature-icon {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      background: rgba(139,123,255,.12);
+      font-size: 24px;
+      margin: 20px 0;
+    }
+
+    .step-card h3, .feature-card h3 {
+      font-family: 'Outfit';
+      font-size: 19px;
+      margin-bottom: 12px;
+    }
+
+    .step-card p, .feature-card p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature-card { padding: 25px; }
+    .feature-icon { margin: 0 0 20px; }
+
+   
+    .prep-section {
+      background: linear-gradient(180deg, transparent, rgba(139,123,255,.06), transparent);
+    }
+
+    .prep-box {
+      max-width: 760px;
+      margin: auto;
+      padding: 40px;
+      border: 1px solid rgba(139,123,255,.25);
+      background: linear-gradient(145deg, #151d39, #101a30);
+      border-radius: 22px;
+      text-align: center;
+      box-shadow: 0 20px 70px rgba(0,0,0,.2);
+    }
+
+    .prep-box h2 {
+      font-family: 'Outfit';
+      font-size: 32px;
+      margin-bottom: 13px;
+    }
+
+    .prep-box p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+      margin-bottom: 25px;
+    }
+
+    .prep-form {
+      display: flex;
+      gap: 10px;
+    }
+
+    .prep-form input {
+      flex: 1;
+      min-width: 0;
+      padding: 15px;
+      border-radius: 10px;
+      outline: none;
+      border: 1px solid var(--border);
+      color: white;
+      background: #0b1326;
+    }
+
+    .prep-form input:focus { border-color: var(--primary); }
+
+    .result {
+      display: none;
+      margin-top: 20px;
+      padding: 17px;
+      border-radius: 12px;
+      background: rgba(54,217,197,.08);
+      border: 1px solid rgba(54,217,197,.25);
+      text-align: left;
+      color: var(--secondary);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+   
+    .faith-card {
+      text-align: center;
+      max-width: 850px;
+      margin: auto;
+      padding: 55px 30px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(54,217,197,.08), rgba(139,123,255,.12));
+      border: 1px solid var(--border);
+    }
+
+    .arabic {
+      font-size: clamp(28px, 5vw, 42px);
+      line-height: 1.8;
+      margin: 22px 0;
+      color: #d8d1ff;
+    }
+
+    .translation {
+      color: var(--secondary);
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    .faith-message {
+      max-width: 600px;
+      margin: auto;
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 14px;
+    }
+
+  
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    footer strong { color: white; }
+
+    /* Scroll animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-14px); }
+    }
+
+    @keyframes rotate {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes progress {
+      from { width: 0; }
+      to { width: 78%; }
+    }
+
+   
+    @media (max-width: 850px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 35px; }
+      .hero-content { text-align: center; }
+      .hero-description { margin-left: auto; margin-right: auto; }
+      .hero-actions { justify-content: center; }
+      .visual { min-height: 430px; }
+      .steps, .features { grid-template-columns: repeat(2, 1fr); }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 78px;
+        left: 0;
+        width: 100%;
+        padding: 25px 5%;
+        flex-direction: column;
+        align-items: flex-start;
+        background: #0e172b;
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-links.active { display: flex; }
+      .menu-btn { display: block; }
+      .nav-btn { display: none; }
+    }
+
+    @media (max-width: 560px) {
+      .hero { padding-top: 125px; }
+      h1 { letter-spacing: -1.5px; }
+      .steps, .features { grid-template-columns: 1fr; }
+      .visual { min-height: 370px; }
+      .orbit { width: 310px; height: 310px; }
+      .dashboard { padding: 20px; }
+      .tag-one { right: 0; }
+      .tag-two { left: 0; }
+      .prep-box { padding: 28px 18px; }
+      .prep-form { flex-direction: column; }
+      .prep-form button { width: 100%; }
+      section:not(.hero) { padding: 75px 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="background-glow glow-one"></div>
+  <div class="background-glow glow-two"></div>
+
+  <header>
+    <nav class="container">
+      <a href="#home" class="logo">TestPath<span> AI.</span></a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#faith">Our Belief</a></li>
+      </ul>
+
+      <a href="#prepare" class="nav-btn">Start Preparing ↗</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">☰</button>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+
+        <div class="hero-content reveal">
+          <div class="eyebrow"><i></i> Your personal AI study companion</div>
+
+          <h1>
+            Every Test Has a
+            <span class="gradient-text">Path to Success.</span>
+          </h1>
+
+          <p class="hero-description">
+            Preparing for an admission test, university exam, job test or
+            competitive examination? Just tell ChatGPT which test you're
+            preparing for. Your personalised learning journey starts there.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#prepare" class="primary-btn">Start Your Preparation ↗</a>
+            <a href="#how-it-works" class="secondary-btn">Explore How It Works</a>
+          </div>
+
+          <p class="trust-note">✦ Learn at your pace. Practice with purpose. Keep improving.</p>
+        </div>
+
+        <div class="visual">
+          <div class="orbit"></div>
+
+          <div class="dashboard">
+            <div class="dashboard-top">
+              <strong>Learning Dashboard</strong>
+              <span class="live">● YOUR JOURNEY</span>
+            </div>
+
+            <div class="progress-title">
+              <span>Preparation Progress</span>
+              <strong>78%</strong>
+            </div>
+
+            <div class="progress"><span></span></div>
+
+            <div class="mini-card">
+              <div class="mini-icon">📝</div>
+              <div>
+                <strong>Practice MCQs</strong>
+                <p>Test your knowledge</p>
+              </div>
+            </div>
+
+            <div class="mini-card">
+              <div class="mini-icon">🎯</div>
+              <div>
+                <strong>Find Weak Areas</strong>
+                <p>Understand what to improve</p>
+              </div>
+            </div>
+
+            <div class="mini-card">
+              <div class="mini-icon">🚀</div>
+              <div>
+                <strong>Build Confidence</strong>
+                <p>Prepare step by step</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="floating-tag tag-one">✨ Personalised Learning</div>
+          <div class="floating-tag tag-two">📚 Practice. Learn. Improve.</div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section id="how-it-works">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="eyebrow">A simple approach</div>
+          <h2>Your Test. <span class="gradient-text">Your Preparation.</span></h2>
+          <p>No complicated process. Tell ChatGPT about your upcoming test and
+            start learning with a structured preparation plan.</p>
+        </div>
+
+        <div class="steps">
+          <div class="step-card reveal">
+            <span class="step-number">STEP 01</span>
+            <div class="step-icon">🎓</div>
+            <h3>Choose Your Test</h3>
+            <p>Tell ChatGPT the name of your admission test, job examination,
+              university exam or any other test.</p>
+          </div>
+
+          <div class="step-card reveal">
+            <span class="step-number">STEP 02</span>
+            <div class="step-icon">🤖</div>
+            <h3>Get Personalised Practice</h3>
+            <p>Ask for relevant topics, MCQs, quizzes, explanations and
+              practice tests based on your test requirements.</p>
+          </div>
+
+          <div class="step-card reveal">
+            <span class="step-number">STEP 03</span>
+            <div class="step-icon">🏆</div>
+            <h3>Learn and Improve</h3>
+            <p>Check your answers, understand mistakes, identify weak areas
+              and continue improving your preparation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+ 
+    <section id="features">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="eyebrow">Everything you need</div>
+          <h2>Prepare <span class="gradient-text">Smarter.</span></h2>
+          <p>Use ChatGPT as a learning companion to practise different
+            subjects and improve your understanding.</p>
+        </div>
+
+        <div class="features">
+          <div class="feature-card reveal">
+            <div class="feature-icon">📋</div>
+            <h3>MCQ Practice</h3>
+            <p>Practise multiple-choice questions with options, answers and explanations.</p>
+          </div>
+
+          <div class="feature-card reveal">
+            <div class="feature-icon">⏱️</div>
+            <h3>Timed Quizzes</h3>
+            <p>Challenge yourself with timed practice sessions and mock tests.</p>
+          </div>
+
+          <div class="feature-card reveal">
+            <div class="feature-icon">📖</div>
+            <h3>Simple Explanations</h3>
+            <p>Understand difficult concepts through clear, step-by-step explanations.</p>
+          </div>
+
+          <div class="feature-card reveal">
+            <div class="feature-icon">🔤</div>
+            <h3>English and Grammar</h3>
+            <p>Improve vocabulary, grammar, comprehension and sentence structure.</p>
+          </div>
+
+          <div class="feature-card reveal">
+            <div class="feature-icon">➗</div>
+            <h3>Math and Reasoning</h3>
+            <p>Practise calculations, formulas, analytical and logical reasoning.</p>
+          </div>
+
+          <div class="feature-card reveal">
+            <div class="feature-icon">🌍</div>
+            <h3>General Knowledge</h3>
+            <p>Revise important general knowledge and test-related subject areas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="prep-section" id="prepare">
+      <div class="container">
+        <div class="prep-box reveal">
+          <div class="eyebrow">Your journey starts here</div>
+          <h2>What Test Are You <span class="gradient-text">Preparing For?</span></h2>
+          <p>Enter your test name below to create a personalised prompt.
+            Copy it and paste it into ChatGPT to begin your preparation.</p>
+
+          <form class="prep-form" id="prepForm">
+            <input
+              type="text"
+              id="testName"
+              placeholder="e.g. University Admission Test"
+              required
+            >
+            <button type="submit" class="primary-btn">Create My Prompt ↗</button>
+          </form>
+
+          <div class="result" id="result" aria-live="polite">
+            <p id="promptText"></p>
+            <button id="copyBtn" class="primary-btn" style="margin-top:15px;">
+              Copy Prompt
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+   
+    <section id="faith">
+      <div class="container">
+        <div class="faith-card reveal">
+          <div class="eyebrow">Faith • Hope • Effort</div>
+          <h2>Work Hard. <span class="gradient-text">Trust Allah.</span></h2>
+
+          <div class="arabic" lang="ar" dir="rtl">رَبِّ زِدْنِي عِلْمًا</div>
+
+          <p class="translation">"My Lord, increase me in knowledge." — Qur'an 20:114</p>
+
+          <p class="faith-message">
+            Every dream begins with an intention, grows through effort and
+            continues with patience. Keep learning, keep trying and place
+            your trust in Allah. May Allah bless your efforts, guide your
+            journey and grant you success. Ameen.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <a href="#home" class="logo">TestPath<span> AI.</span></a>
+      <p style="margin-top:12px;">Your learning journey. Your effort. Your future.</p>
+      <p style="margin-top:12px;">© <span id="year"></span> TestPath AI. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+      menuBtn.textContent = navLinks.classList.contains("active") ? "✕" : "☰";
+    });
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+        menuBtn.textContent = "☰";
+      });
+    });
+
+    
+    const revealElements = document.querySelectorAll(".reveal");
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      revealElements.forEach(element => observer.observe(element));
+    } else {
+      revealElements.forEach(element => element.classList.add("visible"));
+    }
+
+    // Generate personalised ChatGPT prompt
+    const prepForm = document.getElementById("prepForm");
+    const testInput = document.getElementById("testName");
+    const result = document.getElementById("result");
+    const promptText = document.getElementById("promptText");
+    const copyBtn = document.getElementById("copyBtn");
+
+    let generatedPrompt = "";
+
+    prepForm.addEventListener("submit", event => {
+      event.preventDefault();
+
+      const test = testInput.value.trim();
+      if (!test) return;
+
+      generatedPrompt =
+        `I am preparing for the ${test}. Act as my personal test preparation tutor. ` +
+        `Help me identify relevant topics and create a structured study plan. ` +
+        `Give me test-level MCQs with four options, one question at a time. ` +
+        `After I answer, check my answer and explain the correct method in simple language. ` +
+        `Track my weak areas and give me fresh practice questions. ` +
+        `Use reliable information and do not claim questions are official unless verified.`;
+
+      promptText.textContent = generatedPrompt;
+      result.style.display = "block";
+      copyBtn.textContent = "Copy Prompt";
+    });
+
+  
+    copyBtn.addEventListener("click", async () => {
+      if (!generatedPrompt) return;
+
+      try {
+        await navigator.clipboard.writeText(generatedPrompt);
+        copyBtn.textContent = "✓ Copied!";
+      } catch (error) {
+        promptText.textContent = generatedPrompt +
+          "\n\nSelect and copy this prompt manually.";
+        copyBtn.textContent = "Copy not available";
+      }
+    });
+
+   
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
